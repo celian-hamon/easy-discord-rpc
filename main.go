@@ -3,6 +3,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"html/template"
 	"io/ioutil"
 	"net/http"
 	"strconv"
@@ -28,7 +29,8 @@ type rpcItem struct {
 }
 
 func homePage(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, mainPage)
+	tmpl := template.Must(template.ParseFiles("webapp.html"))
+	tmpl.Execute(w, nil)
 }
 
 // constructor function
